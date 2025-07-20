@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Failure Prediction</title>
+    <style>
+        body { font-family: Arial; background-color: #f0f0f0; padding: 40px; text-align: center; }
+        form { background: #fff; padding: 20px; border-radius: 10px; display: inline-block; }
+        input { padding: 10px; margin: 8px; width: 250px; }
+        .btn { padding: 10px 25px; background-color: #007bff; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Heart Failure Prediction</h2>
+    <form action="/predict" method="post">
+        {% for i in range(12) %}
+            <input type="text" name="f{{ i }}" placeholder="Feature {{ i+1 }}" required><br>
+        {% endfor %}
+        <button class="btn" type="submit">Predict</button>
+    </form>
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
